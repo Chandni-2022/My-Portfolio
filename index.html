@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandni Rao | Portfolio</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            position: relative;
+        }
+        header nav a::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background-color: #61dafb;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease-in-out;
+        }
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://source.unsplash.com/1600x900/?tech') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        .hero h1 {
+            font-size: 60px;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease-in-out;
+            letter-spacing: 3px;
+        }
+        .hero p {
+            font-size: 22px;
+            margin: 20px 0;
+            animation: slideIn 2.5s ease-in-out;
+        }
+        .hero .cta-btn {
+            padding: 15px 30px;
+            background-color: #61dafb;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .hero .cta-btn:hover {
+            background-color: #4fa3c7;
+        }
+        .cta-btn a {
+                color: white; /* Match the text color to the button */
+                text-decoration: none; /* Remove underline */
+                display: inline-block; /* Make the link behave like a button */
+                width: 100%; /* Ensure the link spans the full width of the button */
+                height: 100%;
+            }
+        /* About Section */
+        .section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .about img {
+            width: 45%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+        .about-text {
+            width: 50%;
+        }
+        .about-text h2 {
+            font-size: 36px;
+            color: #61dafb;
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .skills-section h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .skill-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .skill-bar {
+            background-color: #e0e0e0;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .skill-bar h3 {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+        .skill-bar div {
+            height: 40px;
+            background-color: #61dafb;
+            border-radius: 30px;
+            text-align: right;
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background-color: #f3f3f3;
+            padding: 100px 20px;
+        }
+        .projects-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .projects {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .project-card {
+            width: 45%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .project-card h3 {
+            font-size: 24px;
+            color: #333;
+            margin: 15px 0;
+        }
+        .project-card p {
+            line-height: 1.6;
+        }
+        .project-card .tech-used {
+            font-size: 14px;
+            color: #61dafb;
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .project-card .tech-used span {
+            background-color: #f3f3f3;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+
+        /* Upcoming Projects */
+        .upcoming-projects {
+            padding: 100px 20px;
+        }
+        .upcoming-projects h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .upcoming-projects p {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .upcoming-project {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .upcoming-project h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .contact h2 {
+            color: #61dafb;
+        }
+        .contact p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact form input,
+        .contact form textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        .contact form button {
+            background-color: #61dafb;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .contact form button:hover {
+            background-color: #4fa3c7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(50px); }
+            to { transform: translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h2>Chandni Rao</h2>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#upcoming">Upcoming</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Hi, I'm <samp style="color: rgb(60, 196, 255);">Chandni</samp></h1>
+            <p>Student | Tech Enthusiast | Innovator</p>
+            <button class="cta-btn"><a href="https://github.com/Chandni-2022">Explore My Work</a></button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <img src="data:image/jpeg;base64,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" alt="Profile Image">
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>Hello! I'm a 3rd-year CSE student with a strong enthusiasm for learning, growing, and building a future in technology. My curiosity drives me to explore new skills, and I approach every challenge with a positive mindset and determination. I'm always open to collaboration, learning from others, and pushing my boundaries to achieve more. Confidence in my abilities and a commitment to continuous improvement define my approach to both academics and personal growth.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <h2>Skills</h2>
+        <div class="skill-bars">
+            <div class="skill-bar">
+                <h3>HTML/CSS</h3>
+                <div style="width: 90%;">80%</div>
+            </div>
+            <div class="skill-bar">
+                <h3>JavaScript</h3>
+                <div style="width: 85%;">55%</div>
+            </div>
+            <div class="skill-bar">
+                <h3>Java/Python</h3>
+                <div style="width: 85%;">75%</div>
+            </div>
+            <div class="skill-bar">
+                <h3>Node.js</h3>
+                <div style="width: 80%;">60%</div>
+            </div>
+            <div class="skill-bar">
+                <h3>MongoDB</h3>
+                <div style="width: 75%;">85%</div>
+            </div>
+            <div class="skill-bar">
+                <h3>React.js</h3>
+                <div style="width: 70%;">60%</div>
+            </div>
+            <div class="skill-bar">
+                <h3>Express.js</h3>
+                <div style="width: 75%;">65%</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <img src="https://source.unsplash.com/600x400/?code" alt="Project Image">
+                <h3><a href="https://github.com/Chandni-2022/MID_QUIZ">MID-Quiz Generator</a></h3>
+                <p>Transform PDFs to JSON files, then into interactive quizzes effortlessly with our PDF to Quiz Generator. Upload your document, and watch it convert key information into engaging quiz questions within seconds!</p>
+                <div class="tech-used">
+                    <span>Node.js</span><span>Express</span><span>MongoDB</span><span>HTML</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://source.unsplash.com/600x400/?security" alt="Project Image">
+                <h3><a href="https://github.com/Chandni-2022/CGPA_Calculator">CGPA Calculator</a></h3>
+                <p>Effortlessly calculate your CGPA with our user-friendly CGPA Calculator, designed to provide quick and accurate results. Input your grades and credits, and watch as your academic progress is transformed into a clear, actionable metric!</p>
+                <div class="tech-used">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://source.unsplash.com/600x400/?app" alt="Project Image">
+                <h3>J.A.R.V.I.S.</h3>
+                <p>Introducing Jarvis, an advanced voice assistant designed to simplify your life by providing seamless text translation, generating concise summaries, and efficiently executing various tasks. Experience the power of voice-activated technology that enhances productivity and communication!</p>
+                <div class="tech-used">
+                    <span>Python</span><span>HTML</span><span>JavaScript</span><span>CSS</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://source.unsplash.com/600x400/?ecommerce" alt="Project Image">
+                <h3><a href="https://github.com/Chandni-2022/Ecommerce_site">E-Commerce Website Landing Page</a></h3>
+                <p>Explore our stunning eCommerce landing page design, crafted to captivate users. With an intuitive layout and eye-catching visuals, your products will shine, making online shopping a delightful experience!</p>
+                <div class="tech-used">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://source.unsplash.com/600x400/?calculator" alt="Project Image">
+                <h3>Matrix Calculator</h3>
+                <p>Unlock the power of matrix operations with our advanced calculator, designed to solve any matrix problem for first and second-year students. Whether it’s addition, subtraction, multiplication, or finding determinants, tackle your matrix challenges with ease and precision!</p>
+                <div class="tech-used">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://source.unsplash.com/600x400/?calculator" alt="Project Image">
+                <h3><a href="https://github.com/Chandni-2022/IDCARD">ID Card</a></h3>
+                <p>Create personalized ID cards with our intuitive ID Card Generator, designed to simplify the process of designing and printing ID cards for students and professionals alike. Customize your card with essential details and stylish templates for a professional look!</p>
+                <div class="tech-used">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+
+    <!-- Upcoming Projects -->
+    <section id="upcoming" class="upcoming-projects section">
+        <h2>Upcoming Projects</h2>
+        <p>Here's a glimpse of my next  projects that are in the pipeline.</p>
+        <div class="upcoming-project">
+            <h3>AI-Powered Automatic Form Filler</h3>
+            <p>Developing an automatic form filler that streamlines data entry processes, reducing user effort and minimizing errors. This tool will utilize advanced algorithms to intelligently populate forms, saving time and enhancing productivity.</p>
+        </div>
+        
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <h2>Contact Me</h2>
+        <p>If you're interested in collaborating, feel free to reach out to me through the form below.</p>
+        <form action="#" method="POST">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Chandni Rao. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+
